@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Выбор конфигурационного файла в зависимости от запускаемого Python скрипта
-if [ "$SCRIPT_NAME" = "SimCLR_finetune_test.py" ]
+if [ "$SCRIPT_NAME" = "Contrastive/SimCLR/SimCLR_finetune_test.py" ]
 then
     CONFIG_FILE="Contrastive/SimCLR/config/HAR_config.yaml"
-elif [ "$SCRIPT_NAME" = "MAE_finetune_test.py" ]
+elif [ "$SCRIPT_NAME" = "Generative/MAE/MAE_finetune_test.py" ]
 then
     CONFIG_FILE="Generative/MAE/config/HAR_config_MAE.yaml"
 else
