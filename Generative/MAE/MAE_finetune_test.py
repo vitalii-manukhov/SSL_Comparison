@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     global arch
     if args.pretrain == True:
-        model_fp = os.path.join(args.model_path, "Pretrained_{}_{}.tar".format(
+        model_fp = os.path.join("Generative/MAE/save/Pretrained_{}_{}.tar".format(
             args.dataset, args.emb_dim))
         model.load_state_dict(torch.load(model_fp, map_location=args.device.type))
         arch = args.dataset
@@ -260,7 +260,7 @@ if __name__ == '__main__':
         if avg_val_F1 > best_val_F1:
             best_val_F1 = avg_val_F1
             print(f'saving best model with F1 {best_val_F1} at {epoch} epoch!')
-            FT_model_path = 'save/finetune/' + arch + str(args.labelled_ratio) + '.pt'
+            FT_model_path = 'Generative/MAE/save/finetune/' + arch + str(args.labelled_ratio) + '.pt'
             torch.save(model, FT_model_path)
 
         if epoch % 10 == 0:

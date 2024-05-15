@@ -246,7 +246,7 @@ if __name__ == "__main__":
     # load pre-trained model from checkpoint
     global arch
     if args.pretrain == True:
-        model_fp = os.path.join(args.model_path, "Pretrained_{}_{}_{}.tar".format(
+        model_fp = os.path.join("Contrastive/SimCLR/save/Pretrained_{}_{}_{}.tar".format(
             args.dataset, args.lr, args.projection_dim))
         simclr_model.load_state_dict(torch.load(model_fp, map_location=args.device.type))
         arch = args.dataset
@@ -307,9 +307,9 @@ if __name__ == "__main__":
 
         if mean_F1_epoch_val > highest_F1:
             print('Update fine-tuned model; update highest F1 to {}'.format(mean_F1_epoch_val))
-            os.makedirs('save/finetunemodel/', exist_ok=True)
-            torch.save(simclr_model.state_dict(), 'save/finetunemodel/' + arch + str(labelled_ratio) + '_model.pt')
-            torch.save(classifier.state_dict(), 'save/finetunemodel/' + arch + str(labelled_ratio) + '_classifier.pt')
+            os.makedirs('Contrastive/SimCLR/save/finetunemodel/', exist_ok=True)
+            torch.save(simclr_model.state_dict(), 'Contrastive/SimCLR/save/finetunemodel/' + arch + str(labelled_ratio) + '_model.pt')
+            torch.save(classifier.state_dict(), 'Contrastive/SimCLR/save/finetunemodel/' + arch + str(labelled_ratio) + '_classifier.pt')
             highest_F1 = mean_F1_epoch_val
 
 
@@ -318,8 +318,8 @@ if __name__ == "__main__":
         if epoch % 10 == 0:
 
             """Load the best model saved above"""
-            simclr_model.load_state_dict(torch.load('save/finetunemodel/' + arch + str(labelled_ratio) + '_model.pt'))
-            classifier.load_state_dict(torch.load('save/finetunemodel/' + arch + str(labelled_ratio) + '_classifier.pt'))
+            simclr_model.load_state_dict(torch.load('Contrastive/SimCLR/save/finetunemodel/' + arch + str(labelled_ratio) + '_model.pt'))
+            classifier.load_state_dict(torch.load('Contrastive/SimCLR/save/finetunemodel/' + arch + str(labelled_ratio) + '_classifier.pt'))
 
             print("=== Testing ===")
 

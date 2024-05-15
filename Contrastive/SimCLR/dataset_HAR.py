@@ -3,6 +3,7 @@ import numpy as np
 import torch
 import argparse
 from utils import yaml_config_hook
+import os
 
 parser = argparse.ArgumentParser(description="SimCLR")
 config = yaml_config_hook("config/HAR_config.yaml")
@@ -13,13 +14,15 @@ args = parser.parse_args()
 
 print("Dataset:", args.dataset)
 # load data
-args.dataset_train = torch.load('../../Datasets/HAR/train.pt')
+
+
+args.dataset_train = torch.load('Datasets/HAR/train.pt')
 print("Train Sample: {}; Label: {}.".format(args.dataset_train['samples'].shape, args.dataset_train['labels'].shape))
 
-args.dataset_val = torch.load('../../Datasets/HAR/val.pt')
+args.dataset_val = torch.load('Datasets/HAR/val.pt')
 print("Val Sample: {}; Label: {}.".format(args.dataset_val['samples'].shape, args.dataset_val['labels'].shape))
 
-args.dataset_test = torch.load('../../Datasets/HAR/test.pt')
+args.dataset_test = torch.load('Datasets/HAR/test.pt')
 print("Test Sample: {}; Label: {}.".format(args.dataset_test['samples'].shape, args.dataset_test['labels'].shape))
 
 train_x = args.dataset_train['samples']

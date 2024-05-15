@@ -9,6 +9,7 @@ def yaml_config_hook(config_file):
     """
 
     # load yaml files in the nested 'defaults' section, which include defaults for experiments
+    config_file = f"Contrastive/SimCLR/{config_file}"
     with open(config_file) as f:
         cfg = yaml.safe_load(f)
         for d in cfg.get("defaults", []):
