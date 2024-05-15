@@ -1,1 +1,11 @@
 .venv
+Contrastive/SimCLR/save/finetunemodel/HAR0.1_classifier.pt
+Contrastive/SimCLR/save/finetunemodel/HAR0.1_model.pt
+Contrastive/SimCLR/save/Pretrained_HAR_0.00015_64.tar
+Datasets/HAR/test.pt
+Datasets/HAR/train.pt
+Datasets/HAR/val.pt
+Generative/MAE/save/finetune/HAR_no_pre0.1.pt
+Generative/MAE/save/finetune/HAR0.1.pt
+Generative/MAE/save/Pretrained_HAR_64.tar
+__pycache__
