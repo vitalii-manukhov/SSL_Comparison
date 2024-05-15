@@ -1,5 +1,2 @@
 .venv
-Datasets/HAR/test.pt
-Datasets/HAR/train.pt
-Datasets/HAR/val.pt
 __pycache__

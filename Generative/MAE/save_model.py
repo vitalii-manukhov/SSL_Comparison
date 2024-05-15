@@ -4,7 +4,7 @@ import torch
 
 def save_model(args, model, optimizer):
     # out = os.path.join(args.model_path, "checkpoint_{}.tar".format(args.current_epoch))
-    out = os.path.join(args.model_path, "Pretrained_{}_{}.tar".format(
+    out = os.path.join("Generative/MAE/save/Pretrained_{}_{}.tar".format(
             args.dataset, args.emb_dim))
 
     # To save a DataParallel model generically, save the model.module.state_dict().
