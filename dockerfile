@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . /app
 
 RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
+RUN chmod +x entrypoint.sh
 
-CMD ["python", "Contrastive/SimCLR/SimCLR_finetune_test.py"]
+ENTRYPOINT ["/app/entrypoint.sh"]
