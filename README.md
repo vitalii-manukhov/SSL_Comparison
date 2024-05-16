@@ -5,22 +5,25 @@
 
 ### Инструкция по запуску
 
-1. Скачайте данные по ссылке: https://figshare.com/ndownloader/articles/19930244/versions/1 и перенесите их по пути Datasets/HAR/
+1. Установите git и docker
 
-2. Сборка контейнера sudo docker build -t ssl_comparison .
+2. Склонируйте репозиторий
 
-3. Выполните предобучение моделей
+3. Скачайте данные по ссылке: https://figshare.com/ndownloader/articles/19930244/versions/1 и перенесите их по пути Datasets/HAR/
 
-sudo docker run -e PRETRAIN="" -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_pretrain.py ssl_comparison
+4. Выполните сборка контейнера:
+- docker build -t ssl_comparison .
 
-sudo docker run -e PRETRAIN="" -e SCRIPT_NAME=Generative/MAE/MAE_pretrain.py ssl_comparison
+5. Выполните предобучение моделей
+- docker run -e PRETRAIN="" -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_pretrain.py ssl_comparison
 
-4. Выполните дообучение моделей
+- docker run -e PRETRAIN="" -e SCRIPT_NAME=Generative/MAE/MAE_pretrain.py ssl_comparison
 
-sudo docker run -e PRETRAIN=true -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
+6. Выполните дообучение моделей (finetuning) для предтренированных моделей и нет
+- docker run -e PRETRAIN=true -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
 
-sudo docker run -e PRETRAIN=false -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
+- docker run -e PRETRAIN=false -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
 
-sudo docker run -e PRETRAIN=true -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
+- docker run -e PRETRAIN=true -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
 
-sudo docker run -e PRETRAIN=false -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
+- docker run -e PRETRAIN=false -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
