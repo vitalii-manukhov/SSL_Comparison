@@ -54,4 +54,4 @@ C предтренировкой SimCLR:
 ![](figures/smoke_3.png)
 
 Без предтренировки MAE:
-![](ffigures/smoke_4.png)
+![](figures/smoke_4.png)
