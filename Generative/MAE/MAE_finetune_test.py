@@ -144,6 +144,13 @@ if __name__ == '__main__':
     step_count = 0
     optimizer.zero_grad()
 
+    # save results
+    finetune_results_df = pd.DataFrame(columns=['Label ratio', 'epoch', 'Loss', 'Acc',
+                                                'Precision', 'Recall', 'F1', 'AUC', 'PRC'],
+                                       index=range(0, int((args.finetune_epochs - 1) / 10))
+                                       )
+    r = 0
+
     for epoch in range(args.finetune_epochs):
         print("--------start fine-tuning--------")
         model.train()
@@ -318,3 +325,18 @@ if __name__ == '__main__':
                     f"Test F1: {avg_test_F1:.4f}\n Test AUC: {avg_test_auc:.4f}\n Test PRC: {avg_test_prc:.4f}"
                 )
                 print("Pretrain: {}; Label ratio: {}".format(args.pretrain, args.labelled_ratio))
+
+            # for results
+            finetune_results_df.loc[r] = pd.Series({'Label ratio': args.labelled_ratio, 'epoch': epoch,
+                                                   'Loss': avg_test_loss, 'Acc': avg_test_acc,
+                                                   'Precision': avg_test_precision, 'Recall': avg_test_recall,
+                                                   'F1': avg_test_F1, 'AUC': avg_test_auc, 'PRC': avg_test_prc}
+                                                  )
+            r = r + 1
+
+print(finetune_results_df)
+
+filename = 'MAE' + args.dataset + str(args.labelled_ratio) + 'seed' + str(args.finetune_seed) + \
+           'pretrain-' + str(args.pretrain)
+finetune_results_df.to_csv('./results/'+filename, sep=',', index=False, encoding='utf-8')
+

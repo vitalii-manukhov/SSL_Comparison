@@ -23,12 +23,7 @@ Self-Supervised Learning можно разделить на два основн�
 4. Выполните сборка контейнера:
 - docker build -t ssl_comparison .
 
-5. Выполните предобучение моделей
-- docker run -e PRETRAIN="" -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_pretrain.py ssl_comparison
-
-- docker run -e PRETRAIN="" -e SCRIPT_NAME=Generative/MAE/MAE_pretrain.py ssl_comparison
-
-6. Выполните дообучение моделей (finetuning) для предтренированных моделей и нет
+5. Выполните дообучение моделей (finetuning) для предтренированных моделей и нет
 - docker run -e PRETRAIN=true -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
 
 - docker run -e PRETRAIN=false -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
@@ -36,22 +31,3 @@ Self-Supervised Learning можно разделить на два основн�
 - docker run -e PRETRAIN=true -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
 
 - docker run -e PRETRAIN=false -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
-
-### Сравнение результатов авторов статьи и смок тестов
-
-Результаты авторов статьи:
-![](figures/article_results.png)
-
-### Результаты смок тестов
-
-C предтренировкой SimCLR:
-![](figures/smoke_1.png)
-
-Без предтренировки SimCLR:
-![](figures/smoke_2.png)
-
-С предтренировкой MAE:
-![](figures/smoke_3.png)
-
-Без предтренировки MAE:
-![](figures/smoke_4.png)

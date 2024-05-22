@@ -33,8 +33,8 @@ logistic_batch_size: 64 # 64, 54
 logistic_epochs: 31  # 31, 101
 
 # finetune options
-pretrain: False
-# pretrain: True
+# pretrain: False
+pretrain: True
 labelled_ratio: 0.1
 
 finetune_seed: 42

@@ -272,11 +272,11 @@ if __name__ == "__main__":
     criterion = torch.nn.CrossEntropyLoss()
 
     # save results
-    # finetune_results_df = pd.DataFrame(columns=['Label ratio', 'epoch', 'Loss', 'Acc',
-    #                                             'Precision', 'Recall', 'F1', 'AUC', 'PRC'],
-    #                                    index=range(0, int((args.logistic_epochs - 1) / 10))
-    #                                    )
-    # r = 0
+    finetune_results_df = pd.DataFrame(columns=['Label ratio', 'epoch', 'Loss', 'Acc',
+                                                'Precision', 'Recall', 'F1', 'AUC', 'PRC'],
+                                       index=range(0, int((args.logistic_epochs - 1) / 10))
+                                       )
+    r = 0
 
     highest_F1 = 0.1
     for epoch in range(args.logistic_epochs):
@@ -337,15 +337,15 @@ if __name__ == "__main__":
 
 
             # for results
-#             finetune_results_df.loc[r] = pd.Series({'Label ratio': args.labelled_ratio, 'epoch': epoch,
-#                                                    'Loss': mean_loss_test, 'Acc': mean_acc_epoch_test,
-#                                                    'Precision': mean_precision_epoch_test, 'Recall': mean_recall_epoch_test,
-#                                                    'F1': mean_F1_epoch_test, 'AUC': mean_auc_epoch_test, 'PRC': mean_prc_epoch_test}
-#                                                   )
-#             r = r + 1
-#
-# print(finetune_results_df)
-#
-# filename = 'SimCLR' + args.dataset + str(args.labelled_ratio) + 'seed' + str(args.finetune_seed) + \
-#            'pretrain-' + str(args.pretrain)
-# finetune_results_df.to_csv('results/'+filename, sep=',', index=False, encoding='utf-8')
+            finetune_results_df.loc[r] = pd.Series({'Label ratio': args.labelled_ratio, 'epoch': epoch,
+                                                   'Loss': mean_loss_test, 'Acc': mean_acc_epoch_test,
+                                                   'Precision': mean_precision_epoch_test, 'Recall': mean_recall_epoch_test,
+                                                   'F1': mean_F1_epoch_test, 'AUC': mean_auc_epoch_test, 'PRC': mean_prc_epoch_test}
+                                                  )
+            r = r + 1
+
+print(finetune_results_df)
+
+filename = 'SimCLR' + args.dataset + str(args.labelled_ratio) + 'seed' + str(args.finetune_seed) + \
+           'pretrain-' + str(args.pretrain)
+finetune_results_df.to_csv('./results/'+filename, sep=',', index=False, encoding='utf-8')
