@@ -18,7 +18,7 @@ Self-Supervised Learning можно разделить на два основн�
 # 1. Установите git и docker
 
 # 2. Склонируйте репозиторий
-git clone <https://github.com/vitalii-manukhov/SSL_Comparison.git>
+git clone https://github.com/vitalii-manukhov/SSL_Comparison.git
 
 # 3. Скачайте данные по ссылке:
 https://figshare.com/ndownloader/articles/19930244/versions/1
