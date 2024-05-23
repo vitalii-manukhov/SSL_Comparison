@@ -347,5 +347,5 @@ if __name__ == "__main__":
 print(finetune_results_df)
 
 filename = 'SimCLR' + args.dataset + str(args.labelled_ratio) + 'seed' + str(args.finetune_seed) + \
-           'pretrain-' + str(args.pretrain)
+           'pretrain-' + str(args.pretrain) + '.csv'
 finetune_results_df.to_csv('./results/'+filename, sep=',', index=False, encoding='utf-8')

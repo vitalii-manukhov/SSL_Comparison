@@ -24,10 +24,6 @@ Self-Supervised Learning можно разделить на два основн�
 - docker build -t ssl_comparison .
 
 5. Выполните дообучение моделей (finetuning) для предтренированных моделей и нет
-- docker run -e PRETRAIN=true -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
+- docker run ssl_comparison
 
-- docker run -e PRETRAIN=false -e SCRIPT_NAME=Contrastive/SimCLR/SimCLR_finetune_test.py ssl_comparison
-
-- docker run -e PRETRAIN=true -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
-
-- docker run -e PRETRAIN=false -e SCRIPT_NAME=Generative/MAE/MAE_finetune_test.py ssl_comparison
+Результатом запуска контейнера станет вывод в консоль текстового документа с таблицами с разностью между эталонными значениями метрик качества и вашими.
